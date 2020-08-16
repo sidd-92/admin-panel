@@ -3,9 +3,8 @@ import React from "react";
 //links
 export const linkLogin = "/login";
 export const linkSignup = "/signup";
+export const linkPosts = "/posts";
 //authenticated links
-export const linkPageDashboard = "/dash/dashboard";
-export const linkPageSetupMeeting = "/dash/setupmeeting";
 export const linkPageProfile = "/dash/profile";
 //linknames
 export const linkNamePageProfile = "Profile";

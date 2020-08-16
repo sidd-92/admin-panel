@@ -4,9 +4,12 @@ import Progress from "./components/Loader/Progress";
 
 import PageLogin from "./components/views/Login/Login";
 import SignUp from "./components/views/PageSignUp/PageSignUp";
+import { linkLogin, linkSignup, linkPosts } from "./routes";
 const Page404 = React.lazy(() => import("./components/views/Page404/Page404"));
 const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"));
-const Home = React.lazy(() => import("./components/views/Home/Home"));
+const PagePosts = React.lazy(() =>
+  import("./components/views/PagePosts/PagePosts")
+);
 
 class App extends React.Component {
   render() {
@@ -22,7 +25,7 @@ class App extends React.Component {
             />
             <Route
               exact
-              path="/login"
+              path={linkLogin}
               name="Login"
               render={(props) => <PageLogin {...props} />}
             />
@@ -37,9 +40,15 @@ class App extends React.Component {
             {/** Other Un-Authenticated Pages Start */}
             <Route
               exact
-              path="/signup"
+              path={linkSignup}
               name="Sign Up"
               render={(props) => <SignUp {...props} />}
+            />
+            <Route
+              exact
+              path={linkPosts}
+              name="Posts"
+              render={(props) => <PagePosts {...props} />}
             />
 
             <Route
