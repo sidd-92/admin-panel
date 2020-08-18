@@ -1,0 +1,7 @@
+@font-face {
+  font-family: HeyAugust;
+  src: url("./Hey\ August.ttf");
+}
+.cursive {
+  font-family: HeyAugust;
+}
