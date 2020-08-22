@@ -24,69 +24,73 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className="w-full flex justify-center items-center h-screen p-0 sm:p-12 bg-login">
-        <Card className="w-full xl:w-1/3 h-full sm:h-auto px-0 py-0 sm:px-4 sm:py-6">
-          <CardContent>
-            <div className="text-2xl font-bold">Login</div>
-            <div className="text-lg font-light">Welcome To Admin Panel</div>
-            <form noValidate autoComplete="off">
-              <div className="pt-6">
-                <TextField
-                  id="outlined-basic"
-                  label="Username"
-                  variant="outlined"
-                  fullWidth={true}
-                />
-              </div>
-              <div className="pt-6">
-                <FormControl fullWidth variant="outlined">
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={this.state.showPassword ? "text" : "password"}
-                    value={this.state.password}
-                    onChange={(e) =>
-                      this.setState({ password: e.target.value })
-                    }
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={() =>
-                            this.setState({
-                              showPassword: !this.state.showPassword,
-                            })
-                          }
-                          edge="end"
-                        >
-                          {this.state.showPassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    labelWidth={70}
+      <div className="bg-login h-screen pt-0 sm:pt-20">
+        <div className="cursive bg-transparent text-white text-center text-5xl">
+          Welcome To Admin Panel
+        </div>
+        <div className="w-full flex justify-center items-center p-0 sm:p-12">
+          <Card className="w-full xl:w-1/3 h-full sm:h-auto px-0 py-0 sm:px-4 sm:py-6">
+            <CardContent>
+              <div className="text-2xl font-bold text-center">Login</div>
+              <form noValidate autoComplete="off">
+                <div className="pt-6">
+                  <TextField
+                    id="outlined-basic"
+                    label="Username"
+                    variant="outlined"
+                    fullWidth={true}
                   />
-                </FormControl>
-              </div>
-              <div className="pt-8">
-                <Button
-                  fullWidth={true}
-                  style={{ padding: "14px" }}
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                >
-                  Login
-                </Button>
-              </div>
-            </form>
-          </CardContent>
-        </Card>
+                </div>
+                <div className="pt-6">
+                  <FormControl fullWidth variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={this.state.showPassword ? "text" : "password"}
+                      value={this.state.password}
+                      onChange={(e) =>
+                        this.setState({ password: e.target.value })
+                      }
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={() =>
+                              this.setState({
+                                showPassword: !this.state.showPassword,
+                              })
+                            }
+                            edge="end"
+                          >
+                            {this.state.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                      labelWidth={70}
+                    />
+                  </FormControl>
+                </div>
+                <div className="pt-8">
+                  <Button
+                    fullWidth={true}
+                    style={{ padding: "14px" }}
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   }
