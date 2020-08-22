@@ -5,3 +5,9 @@
 .cursive {
   font-family: HeyAugust;
 }
+
+.bg-login {
+  background-image: url("./img/adminbg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}

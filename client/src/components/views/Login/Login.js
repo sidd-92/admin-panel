@@ -12,7 +12,7 @@ import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
 import bgImage from "../../../assets/img/adminbg.jpg";
-
+import { SocialIcon } from "react-social-icons";
 import IconButton from "@material-ui/core/IconButton";
 
 export default class Login extends Component {
@@ -25,8 +25,8 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className="w-full flex justify-center items-center h-screen p-2 sm:p-12">
-        <Card className="w-full sm:w-1/3 h-full px-0 py-0 sm:px-4 sm:py-8">
+      <div className="w-full flex justify-center items-center h-screen p-0 sm:p-12 bg-login">
+        <Card className="w-full xl:w-1/3 h-full px-0 py-0 sm:px-4 sm:py-8">
           <CardContent>
             <div className="text-2xl font-bold">Login</div>
             <div className="text-lg font-light">Welcome To Admin Panel</div>
@@ -75,6 +75,9 @@ export default class Login extends Component {
                 </FormControl>
               </div>
             </form>
+            <div className="p-2">
+              <SocialIcon url="http://twitter.com/jaketrent" />
+            </div>
           </CardContent>
         </Card>
       </div>
