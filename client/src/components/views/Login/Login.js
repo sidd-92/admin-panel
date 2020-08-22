@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
+import bgImage from "../../../assets/img/adminbg.jpg";
 
 import IconButton from "@material-ui/core/IconButton";
 
