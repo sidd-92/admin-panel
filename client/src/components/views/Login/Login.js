@@ -24,12 +24,12 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className="bg-login h-screen pt-0 sm:pt-20">
-        <div className="cursive bg-transparent text-white text-center text-5xl">
+      <div className="bg-login h-screen pt-10 sm:pt-20">
+        <div className="cursive bg-transparent text-white text-center text-5xl p-2 sm:p-0">
           Welcome To Admin Panel
         </div>
-        <div className="w-full flex justify-center items-center p-0 sm:p-12">
-          <Card className="w-full xl:w-1/3 h-full sm:h-auto px-0 py-0 sm:px-4 sm:py-6">
+        <div className="w-full flex justify-center items-center p-2 sm:p-12">
+          <Card className="w-full xl:w-1/3 px-0 py-0 sm:px-4 sm:py-6">
             <CardContent>
               <div className="text-2xl font-bold text-center">Login</div>
               <form noValidate autoComplete="off">
