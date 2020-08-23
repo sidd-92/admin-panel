@@ -5,6 +5,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const Post = require("./models/Post");
+const bcrypt = require("bcrypt");
+const uuidv1 = require("uuid/v1");
+const sendResetLink = require("./sendEmail");
+const verifyEmail = require("./verifyEmail");
+
 const router = express.Router();
 
 const app = express();
@@ -55,6 +60,31 @@ app.post("/newpost", (req, res) => {
         error: err,
       });
     });
+});
+
+app.post("/forgot", (req, res) => {
+  if (req.body.email) {
+    const id = uuidv1();
+    //verifyEmail(req.body.email);
+    sendResetLink(req.body.email, id);
+  }
+  res.status(200).json();
+});
+
+app.patch("/reset", (req, res) => {
+  let user = {};
+  if (req.query.id && req.query.email) {
+    bcrypt.hash(req.body.password, 10).then((hashed) => {
+      res.status(200).json({
+        user: {
+          password: hashed,
+          email: req.query.email,
+        },
+      });
+    });
+  } else {
+    res.status(400).json({ message: "QUERY PARAM (id and email) required" });
+  }
 });
 
 app.get("/", (req, res) => {

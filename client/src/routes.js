@@ -4,6 +4,8 @@ import React from "react";
 export const linkLogin = "/login";
 export const linkSignup = "/signup";
 export const linkPosts = "/posts";
+export const linkForgotPwd = "/forgotPassword";
+export const linkResetPwd = "/reset";
 //authenticated links
 export const linkPageProfile = "/dash/profile";
 //linknames

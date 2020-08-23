@@ -92,7 +92,12 @@ export default class Login extends Component {
                 <div className="mr-auto pt-2 text-purple-800 font-medium transition duration-200 underline hover:text-pink-700 cursor-pointer">
                   Forgot Password
                 </div>
-                <div className="ml-auto pt-2 text-purple-800 font-medium transition duration-200 underline hover:text-pink-700 cursor-pointer">
+                <div
+                  onClick={() => {
+                    this.props.history.push("/signup");
+                  }}
+                  className="ml-auto pt-2 text-purple-800 font-medium transition duration-200 underline hover:text-pink-700 cursor-pointer"
+                >
                   Sign Up Here
                 </div>
               </div>
