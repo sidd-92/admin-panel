@@ -4,8 +4,15 @@ import Progress from "./components/Loader/Progress";
 
 import PageLogin from "./components/views/Login/Login";
 import SignUp from "./components/views/PageSignUp/PageSignUp";
+import PageForgotPassword from "./components/views/PageForgotPassword";
 import PageReset from "./components/views/PageReset";
-import { linkLogin, linkSignup, linkPosts, linkResetPwd } from "./routes";
+import {
+  linkLogin,
+  linkSignup,
+  linkPosts,
+  linkResetPwd,
+  linkForgotPwd,
+} from "./routes";
 const Page404 = React.lazy(() => import("./components/views/Page404/Page404"));
 const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"));
 const PagePosts = React.lazy(() =>
@@ -50,6 +57,12 @@ class App extends React.Component {
               path={linkResetPwd}
               name="Reset Pwd"
               render={(props) => <PageReset {...props} />}
+            />
+            <Route
+              exact
+              path={linkForgotPwd}
+              name="Forgot Password"
+              render={(props) => <PageForgotPassword {...props} />}
             />
             <Route
               exact

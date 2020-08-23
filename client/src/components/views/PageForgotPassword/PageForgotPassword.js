@@ -13,8 +13,9 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
 import bgImage from "../../../assets/img/adminbg.jpg";
 import IconButton from "@material-ui/core/IconButton";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-export default class Login extends Component {
+export default class ForgotPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +32,9 @@ export default class Login extends Component {
         <div className="w-full flex justify-center items-center p-2 sm:p-12">
           <Card className="w-full xl:w-1/3 px-0 py-0 sm:px-4 sm:py-6">
             <CardContent>
-              <div className="text-2xl font-bold text-center">Login</div>
+              <div className="text-2xl font-bold text-center">
+                Forgot Password
+              </div>
               <form noValidate autoComplete="off">
                 <div className="pt-6">
                   <TextField
@@ -41,41 +44,6 @@ export default class Login extends Component {
                     fullWidth={true}
                   />
                 </div>
-                <div className="pt-6">
-                  <FormControl fullWidth variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Password
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      type={this.state.showPassword ? "text" : "password"}
-                      value={this.state.password}
-                      onChange={(e) =>
-                        this.setState({ password: e.target.value })
-                      }
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={() =>
-                              this.setState({
-                                showPassword: !this.state.showPassword,
-                              })
-                            }
-                            edge="end"
-                          >
-                            {this.state.showPassword ? (
-                              <Visibility />
-                            ) : (
-                              <VisibilityOff />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      labelWidth={70}
-                    />
-                  </FormControl>
-                </div>
                 <div className="pt-8">
                   <Button
                     fullWidth={true}
@@ -84,18 +52,21 @@ export default class Login extends Component {
                     color="primary"
                     size="large"
                   >
-                    Login
+                    Reset
                   </Button>
                 </div>
               </form>
               <div className="w-full flex">
                 <div
                   onClick={() => {
-                    this.props.history.push("/forgotpassword");
+                    this.props.history.push("/login");
                   }}
                   className="mr-auto text-sm pt-2 text-purple-800 font-medium transition duration-200 underline hover:text-pink-700 cursor-pointer"
                 >
-                  Forgot Password
+                  <span>
+                    <ArrowBackIcon fontSize="small" />
+                  </span>
+                  Go Back
                 </div>
                 <div
                   onClick={() => {
