@@ -65,13 +65,6 @@ class App extends React.Component {
               render={(props) => <PageForgotPassword {...props} />}
             />
             <Route
-              exact
-              path={linkPosts}
-              name="Posts"
-              render={(props) => <PagePosts {...props} />}
-            />
-
-            <Route
               path="/"
               name="Home"
               render={(props) => <DefaultLayout {...props} />}

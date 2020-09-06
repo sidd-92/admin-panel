@@ -68,7 +68,7 @@ app.post("/forgot", (req, res) => {
     //verifyEmail(req.body.email);
     sendResetLink(req.body.email, id);
   }
-  res.status(200).json();
+  res.status(200).json({ message: "Email Has been Sent" });
 });
 
 app.patch("/reset", (req, res) => {

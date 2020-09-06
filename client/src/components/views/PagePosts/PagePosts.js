@@ -5,7 +5,6 @@ export default class PagePosts extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar history={this.props.history} />
         <div className="text-4xl cursive text-center">
           View Your Created Posts Here!
         </div>
