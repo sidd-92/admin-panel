@@ -4,6 +4,7 @@ import React from "react";
 export const linkLogin = "/login";
 export const linkSignup = "/signup";
 export const linkPosts = "/dash/posts";
+export const linkCreatePost = "/dash/createPost";
 export const linkForgotPwd = "/forgotPassword";
 export const linkResetPwd = "/reset";
 //authenticated links
@@ -19,6 +20,9 @@ const PageProfile = React.lazy(() =>
 const PageHome = React.lazy(() => import("./components/views/Home/Home"));
 const PagePosts = React.lazy(() =>
   import("./components/views/PagePosts/PagePosts")
+);
+const PageCreatePost = React.lazy(() =>
+  import("./components/views/PageCreatePost/PageCreatePost")
 );
 
 const routes = [
@@ -41,6 +45,12 @@ const routes = [
     exact: true,
     name: "Posts",
     component: PagePosts,
+  },
+  {
+    path: linkCreatePost,
+    exact: true,
+    name: "Posts",
+    component: PageCreatePost,
   },
 
   //{ path: linkSignup, exact: true, name: linkNameSignup, component: SignUp },

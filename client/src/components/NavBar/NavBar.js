@@ -122,6 +122,29 @@ export default function NavBar(props) {
           <div className="hidden sm:block">
             <Button
               onClick={() => {
+                props["history"].push("/dash/createPost");
+                console.log(
+                  props["history"].location.pathname === "/dash/createPost"
+                );
+              }}
+              style={{
+                outline: "none",
+                backgroundColor:
+                  props["history"].location.pathname === "/dash/createPost"
+                    ? "white"
+                    : "",
+                color:
+                  props["history"].location.pathname === "/dash/createPost"
+                    ? "#3f51b5"
+                    : "white",
+              }}
+            >
+              Create Posts
+            </Button>
+          </div>
+          <div className="hidden sm:block">
+            <Button
+              onClick={() => {
                 props["history"].push("/dash/profile");
               }}
               style={{
