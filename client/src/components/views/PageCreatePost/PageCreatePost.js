@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Tooltip from "@material-ui/core/Tooltip";
 import HelpIcon from "@material-ui/icons/Help";
+import FileUploader from "../../FileUploader";
 
 class PageCreatePost extends React.Component {
   render() {
@@ -30,6 +31,19 @@ class PageCreatePost extends React.Component {
               <TextField
                 id="outlined-basic"
                 label=""
+                size="small"
+                variant="outlined"
+                fullWidth={true}
+              />
+            </div>
+            <div className="w-1/2 pl-6 pt-4">
+              <div className="font-medium pb-2">Featured Image</div>
+              <FileUploader />
+            </div>
+            <div className="w-1/2 pl-6 pt-6 ">
+              <TextField
+                id="outlined-basic"
+                label="Add A Caption (Optional)"
                 size="small"
                 variant="outlined"
                 fullWidth={true}
