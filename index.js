@@ -30,37 +30,6 @@ mongoose
     });
   });
 const PORT = 3030;
-app.post("/newpost", (req, res) => {
-  const newPost = new Post({
-    _id: new mongoose.Types.ObjectId(),
-    title: req.body.title,
-    content: req.body.content,
-  });
-  newPost
-    .save()
-    .then((result) => {
-      if (result) {
-        res.status(201).json({
-          message: "Post Created Sucessfully",
-          postInfo: {
-            title: result.title,
-            content: result.content,
-            dateCreated: result.dateCreated,
-          },
-        });
-      } else {
-        res.status(404).json({
-          message: "No Valid Entry Found",
-        });
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
-    });
-});
 
 app.post("/forgot", (req, res) => {
   if (req.body.email) {
