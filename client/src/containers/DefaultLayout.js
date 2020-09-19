@@ -1,6 +1,7 @@
 import React, { Component, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Progress from "../components/Loader/Progress";
+import AuthValidator from "../components/AuthValidator/AuthValidator";
 import NavBar from "../components/NavBar/NavBar";
 import routes from "../routes";
 
@@ -22,9 +23,7 @@ class DefaultLayout extends Component {
                   path={route.path}
                   exact={route.exact}
                   name={route.name}
-                  render={(props) => (
-                    <route.component {...props} routes={route.routes} />
-                  )}
+                  render={(props) => <AuthValidator authorizedcomponent={route.component} urlpath={route.path} {...props} />}
                 />
               ) : null;
             })}
