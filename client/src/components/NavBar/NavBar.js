@@ -15,6 +15,7 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import { linkLogin } from "../../routes";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
@@ -68,9 +69,7 @@ export default function NavBar(props) {
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -83,13 +82,7 @@ export default function NavBar(props) {
       <AppBar position="static">
         <Toolbar>
           <div className="block sm:hidden">
-            <IconButton
-              edge="start"
-              onClick={() => setMenuOpen(true)}
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
+            <IconButton edge="start" onClick={() => setMenuOpen(true)} className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
           </div>
@@ -100,20 +93,12 @@ export default function NavBar(props) {
             <Button
               onClick={() => {
                 props["history"].push("/dash/posts");
-                console.log(
-                  props["history"].location.pathname === "/dash/posts"
-                );
+                console.log(props["history"].location.pathname === "/dash/posts");
               }}
               style={{
                 outline: "none",
-                backgroundColor:
-                  props["history"].location.pathname === "/dash/posts"
-                    ? "white"
-                    : "",
-                color:
-                  props["history"].location.pathname === "/dash/posts"
-                    ? "#3f51b5"
-                    : "white",
+                backgroundColor: props["history"].location.pathname === "/dash/posts" ? "white" : "",
+                color: props["history"].location.pathname === "/dash/posts" ? "#3f51b5" : "white",
               }}
             >
               Manage Posts
@@ -123,20 +108,12 @@ export default function NavBar(props) {
             <Button
               onClick={() => {
                 props["history"].push("/dash/createPost");
-                console.log(
-                  props["history"].location.pathname === "/dash/createPost"
-                );
+                console.log(props["history"].location.pathname === "/dash/createPost");
               }}
               style={{
                 outline: "none",
-                backgroundColor:
-                  props["history"].location.pathname === "/dash/createPost"
-                    ? "white"
-                    : "",
-                color:
-                  props["history"].location.pathname === "/dash/createPost"
-                    ? "#3f51b5"
-                    : "white",
+                backgroundColor: props["history"].location.pathname === "/dash/createPost" ? "white" : "",
+                color: props["history"].location.pathname === "/dash/createPost" ? "#3f51b5" : "white",
               }}
             >
               Create Posts
@@ -149,14 +126,8 @@ export default function NavBar(props) {
               }}
               style={{
                 outline: "none",
-                backgroundColor:
-                  props["history"].location.pathname === "/dash/profile"
-                    ? "white"
-                    : "",
-                color:
-                  props["history"].location.pathname === "/dash/profile"
-                    ? "#3f51b5"
-                    : "white",
+                backgroundColor: props["history"].location.pathname === "/dash/profile" ? "white" : "",
+                color: props["history"].location.pathname === "/dash/profile" ? "#3f51b5" : "white",
               }}
             >
               Profile
@@ -187,16 +158,20 @@ export default function NavBar(props) {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  localStorage.removeItem("userInfo");
+                  handleClose();
+                  props.history.push(linkLogin);
+                }}
+              >
+                Logout
+              </MenuItem>
             </Menu>
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        anchor="left"
-        open={isMenuOpen}
-        onClose={() => setMenuOpen(false)}
-      >
+      <Drawer anchor="left" open={isMenuOpen} onClose={() => setMenuOpen(false)}>
         {list()}
       </Drawer>
     </div>
