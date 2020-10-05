@@ -6,7 +6,9 @@ const bcrypt = require("bcrypt");
 const sendResetLink = require("../../sendEmail");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const checkAuth = require("../middleware/check-auth");
 
+const tokenList = {};
 router.get("/test", (req, res, next) => {
   return res.status(200).json({
     message: "Test",
@@ -85,9 +87,21 @@ router.post("/login", (req, res, next) => {
               expiresIn: "1h",
             }
           );
+          const refreshToken = jwt.sign(
+            {
+              email: user[0].email,
+              userID: user[0]._id,
+            },
+            process.env.JWT_REFRESH,
+            {
+              expiresIn: "2h",
+            }
+          );
+          tokenList[refreshToken] = res;
           return res.status(200).json({
             message: "Auth Sucessfull",
             token: token,
+            refreshToken: refreshToken,
           });
         }
         return res.status(401).json({
@@ -101,6 +115,32 @@ router.post("/login", (req, res, next) => {
         error: err,
       });
     });
+});
+
+router.post("/token", (req, res) => {
+  // refresh the damn token
+  const postData = req.body;
+  // if refresh token exists
+  if (postData.refreshToken && postData.refreshToken in tokenList) {
+    const user = {
+      email: postData.email,
+      password: postData.password,
+    };
+    const token = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "1h" });
+    const response = {
+      token: token,
+    };
+    // update the token in the list
+    tokenList[postData.refreshToken].token = token;
+    res.status(200).json(response);
+  } else {
+    res.status(404).send("Invalid request");
+  }
+});
+
+router.get("/secure", checkAuth, (req, res) => {
+  // all secured routes goes here
+  res.status(200).json({ message: "Secured Route" });
 });
 
 router.post("/forgot", (req, res) => {

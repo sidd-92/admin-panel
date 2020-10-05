@@ -15,11 +15,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    const app = express();
-
-    app.listen(5000, () => {
-      console.log("Server has started!");
-    });
+    console.log("Database Connected");
   });
 app.use(morgan("dev"));
 //app.use("/uploads", express.static("uploads"));
