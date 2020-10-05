@@ -12,7 +12,7 @@ class DefaultLayout extends Component {
 
   render() {
     return (
-      <main>
+      <main className="flex-grow">
         <NavBar history={this.props.history} />
         <React.Suspense fallback={<Progress />}>
           <Switch>
